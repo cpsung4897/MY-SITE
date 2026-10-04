@@ -1,0 +1,1291 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>POP&amp;CON</title>
+<style>
+  :root{
+    --gold:#F4B942; --gold-100:#FEF3D6; --gold-200:#FCE6AD;
+    --cream:#FFF3D6; --signal:#E31B23; --signal-600:#C7141B; --ink:#141414; --white:#ffffff;
+  }
+  *{box-sizing:border-box;}
+  /* Edited text can run longer or shorter than the original copy — keep it
+     wrapping inside its own box instead of overflowing and shifting the
+     surrounding card/grid layout. */
+  [data-edit]{overflow-wrap:break-word;word-break:keep-all;white-space:pre-wrap;}
+  [contenteditable="true"]{outline:none;}
+  .kakao-float{position:fixed;right:24px;bottom:96px;z-index:60;width:56px;height:56px;border-radius:999px;background:#FEE500;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 28px rgba(0,0,0,.25);text-decoration:none;font-size:26px;transition:transform .15s;}
+  .kakao-float:hover{transform:scale(1.07);}
+  .kakao-float .kakao-tip{position:absolute;right:64px;background:var(--ink);color:#fff;font-size:12.5px;font-weight:700;padding:8px 14px;border-radius:8px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .15s;}
+  .kakao-float:hover .kakao-tip{opacity:1;}
+  @media (max-width:640px){ .kakao-float{right:16px;bottom:84px;width:50px;height:50px;font-size:22px;} }
+  body{font-family:'Pretendard','Noto Sans KR',sans-serif;background:var(--cream);color:var(--ink);margin:0;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3{text-wrap:balance;}
+  img{max-width:100%;}
+  .wrap{max-width:1180px;margin:0 auto;padding-inline:24px;}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-weight:800;border-radius:999px;padding:14px 28px;text-decoration:none;border:none;cursor:pointer;font-size:15px;}
+  .btn-signal{background:var(--signal);color:#fff;box-shadow:0 12px 24px -10px rgba(227,27,35,.45);}
+  .btn-signal:hover{background:var(--signal-600);}
+  .btn-outline{background:#fff;border:1px solid rgba(20,20,20,.15);color:var(--ink);}
+  .btn-outline:hover{border-color:rgba(20,20,20,.4);}
+  .eyebrow{color:var(--signal);font-weight:800;font-size:13px;letter-spacing:.12em;margin-bottom:10px;}
+  section{padding-block:96px;}
+  .page{display:none;}
+  .page.active{display:block;}
+  nav.links a.active-link, #mobileMenu a.active-link{color:var(--signal);}
+  .mini-photo.company-photo{aspect-ratio:16/9;margin-bottom:56px;}
+  .proc-hero-cta{display:flex;align-items:center;gap:28px;flex-wrap:wrap;margin-bottom:56px;}
+  .link-arrow{font-weight:700;font-size:14px;color:var(--ink);text-decoration:none;display:inline-flex;align-items:center;gap:6px;}
+  .link-arrow:hover{color:var(--signal);}
+  .proc-highlight{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;position:relative;}
+  @media (max-width:900px){ .proc-highlight{grid-template-columns:1fr;} }
+  .proc-highlight .ic-badge{width:56px;height:56px;border-radius:16px;background:rgba(244,185,66,.16);display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:20px;}
+  .proc-highlight h3{font-size:28px;font-weight:900;margin:0 0 14px;color:var(--cream);line-height:1.4;}
+  .proc-highlight p.desc{color:rgba(255,243,214,.6);line-height:1.7;margin:0 0 30px;max-width:420px;}
+  .proc-list{display:flex;flex-direction:column;gap:22px;position:relative;}
+  .proc-list-item{display:flex;gap:16px;align-items:flex-start;}
+  .proc-list-item .proc-num{width:40px;height:40px;border-radius:12px;font-size:15px;margin-bottom:0;flex-shrink:0;background:rgba(255,255,255,.12);color:var(--cream);}
+  .proc-list-item h4{margin:0 0 4px;font-size:15px;font-weight:800;color:var(--cream);}
+  .proc-list-item p{margin:0;font-size:13px;color:rgba(255,243,214,.6);line-height:1.6;}
+  .example-card{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;padding-block:56px;border-bottom:1px solid rgba(20,20,20,.08);}
+  .example-card:last-of-type{border-bottom:none;}
+  .example-card.rev .example-photo{order:2;}
+  @media (max-width:900px){ .example-card{grid-template-columns:1fr;} .example-card.rev .example-photo{order:0;} }
+  .example-photo{aspect-ratio:4/3;border-radius:24px;background-size:cover;background-position:center;}
+  .example-meta{font-size:12.5px;color:rgba(20,20,20,.45);margin:18px 0 0;font-weight:600;}
+  .example-bullets{margin:16px 0 0;padding-left:18px;color:rgba(20,20,20,.65);font-size:14px;line-height:1.85;}
+  .example-links{display:flex;align-items:center;gap:22px;margin-top:26px;flex-wrap:wrap;}
+  .service-card .service-icon{font-size:26px;margin-bottom:14px;}
+  .service-card p.t{font-weight:800;font-size:16px;margin:0 0 8px;}
+  .service-card p.d{font-size:13px;color:rgba(20,20,20,.6);line-height:1.6;margin:0;letter-spacing:-.01em;text-indent:2px;}
+  /* WORK page — case study sections */
+  .work-sub{margin-top:96px;}
+  .work-sub .eyebrow{margin-bottom:6px;}
+  .work-sub h3.sec-title{font-size:28px;font-weight:900;margin:0 0 8px;}
+  .work-sub p.sec-desc{color:rgba(20,20,20,.55);font-size:14px;margin:0 0 40px;line-height:1.7;}
+  .case-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;}
+  @media (max-width:1050px){ .case-grid{grid-template-columns:repeat(3,1fr);} }
+  @media (max-width:640px){ .case-grid{grid-template-columns:repeat(2,1fr);} }
+  .case-card{background:#fff;border:1px solid rgba(20,20,20,.08);border-radius:20px;padding:20px;}
+  .case-badge{display:inline-block;background:var(--gold-100);color:var(--ink);font-weight:800;font-size:12px;padding:5px 12px;border-radius:999px;margin-bottom:14px;}
+  .ba-pair{display:flex;align-items:center;gap:6px;margin-bottom:14px;}
+  .ba-block{flex:1;border-radius:12px;padding:14px 10px;text-align:center;}
+  .ba-block.before{background:rgba(20,20,20,.05);}
+  .ba-block.after{background:rgba(227,27,35,.08);}
+  .ba-block .ba-label{font-size:10.5px;font-weight:800;letter-spacing:.06em;color:rgba(20,20,20,.4);display:block;margin-bottom:6px;}
+  .ba-block.after .ba-label{color:var(--signal);}
+  .ba-block .ba-swatch{height:52px;border-radius:8px;margin-bottom:8px;}
+  .ba-block .ba-line{height:8px;border-radius:4px;background:rgba(20,20,20,.12);margin-bottom:6px;}
+  .ba-block.after .ba-line{background:rgba(227,27,35,.22);}
+  .ba-arrow{font-size:16px;color:rgba(20,20,20,.3);flex-shrink:0;}
+  .case-card ul.case-bullets{margin:0;padding-left:16px;font-size:12.5px;color:rgba(20,20,20,.6);line-height:1.7;}
+  .feed-mock{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:16px;}
+  .feed-phone{width:74px;flex-shrink:0;}
+  .feed-phone .feed-label{font-size:10.5px;font-weight:800;letter-spacing:.06em;color:rgba(20,20,20,.4);text-align:center;display:block;margin-bottom:8px;}
+  .feed-phone.after .feed-label{color:var(--signal);}
+  .feed-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;border-radius:14px;overflow:hidden;border:4px solid rgba(20,20,20,.85);}
+  .feed-grid div{aspect-ratio:1;}
+  .insight-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  @media (max-width:900px){ .insight-grid{grid-template-columns:1fr;} }
+  .insight-card{background:#fff;border:1px solid rgba(20,20,20,.08);border-radius:24px;padding:28px;}
+  .insight-card .insight-loc{font-size:12.5px;font-weight:700;color:rgba(20,20,20,.45);margin:0 0 6px;}
+  .insight-card h4{font-size:19px;font-weight:900;margin:0 0 20px;line-height:1.4;}
+  .insight-card h4 .hl{color:var(--signal);}
+  .bar-chart{display:flex;align-items:flex-end;gap:10px;height:120px;margin-bottom:10px;}
+  .bar-chart .bar{flex:1;border-radius:6px 6px 0 0;background:var(--gold-200);position:relative;}
+  .bar-chart .bar.on{background:var(--signal);}
+  .bar-chart .bar span{position:absolute;top:-22px;left:0;right:0;text-align:center;font-size:11px;font-weight:800;color:var(--ink);}
+  .bar-chart-labels{display:flex;gap:10px;}
+  .bar-chart-labels span{flex:1;text-align:center;font-size:11px;color:rgba(20,20,20,.45);}
+  .line-chart{margin-bottom:10px;}
+  .ui-compare{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+  .ui-compare .ui-box{flex:1;border-radius:12px;padding:14px;background:rgba(20,20,20,.04);}
+  .ui-compare .ui-box.after{background:rgba(227,27,35,.06);}
+  .ui-compare .ui-box .ui-label{font-size:10px;font-weight:800;color:rgba(20,20,20,.4);display:block;margin-bottom:8px;}
+  .ui-compare .ui-box.after .ui-label{color:var(--signal);}
+  .ui-compare .ui-row{height:10px;border-radius:5px;background:rgba(20,20,20,.15);margin-bottom:6px;}
+  .ui-compare .ui-box.after .ui-row{background:rgba(227,27,35,.3);}
+  .narrative-box{background:var(--ink);border-radius:32px;padding:56px;}
+  .narrative-box .eyebrow{color:var(--gold);}
+  .narrative-box h3{color:var(--cream);font-size:30px;font-weight:900;margin:0 0 12px;line-height:1.4;}
+  .narrative-box h3 .hl{color:var(--gold);}
+  .narrative-box p.lead{color:rgba(255,243,214,.6);font-size:14.5px;line-height:1.8;margin:0 0 44px;max-width:640px;}
+  .phase-row{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+  @media (max-width:900px){ .phase-row{grid-template-columns:1fr;} }
+  .phase-item .phase-num{width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,.12);color:var(--cream);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;margin-bottom:16px;}
+  .phase-item h4{color:var(--cream);font-size:16px;font-weight:800;margin:0 0 10px;}
+  .phase-item p{color:rgba(255,243,214,.6);font-size:13px;line-height:1.75;margin:0;}
+
+  .slogan-box{padding:48px;}
+  .slogan-box .eyebrow{color:var(--gold);}
+  .slogan-box h3{font-size:28px;font-weight:900;margin:0;color:var(--cream);}
+  .grid{display:grid;gap:24px;}
+  .g4{grid-template-columns:repeat(4,1fr);}
+  .g3{grid-template-columns:repeat(3,1fr);}
+  .g2{grid-template-columns:1fr 1fr;}
+  @media (max-width:900px){ .g4{grid-template-columns:1fr 1fr;} .g3{grid-template-columns:1fr;} .g2{grid-template-columns:1fr;} .hero-grid{grid-template-columns:1fr!important;} }
+  @media (max-width:520px){ .g4{grid-template-columns:1fr;} }
+  .card{background:#fff;border:1px solid rgba(20,20,20,.08);border-radius:24px;padding:32px;}
+  header.site{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(255,243,214,.85);backdrop-filter:blur(10px);border-bottom:1px solid rgba(20,20,20,.08);}
+  .nav-inner{height:80px;display:flex;align-items:center;justify-content:space-between;}
+  nav.links{display:flex;gap:40px;font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.04em;}
+  nav.links a{color:var(--ink);text-decoration:none;}
+  nav.links a:hover{color:var(--signal);}
+  .menu-btn{display:none;background:none;border:none;cursor:pointer;padding:8px;}
+  #mobileMenu{display:none;background:var(--cream);border-top:1px solid rgba(20,20,20,.08);padding:16px 24px;}
+  #mobileMenu a{display:block;padding:10px 0;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--ink);text-decoration:none;font-size:14px;}
+  #mobileMenu a.cta{background:var(--signal);color:#fff;text-align:center;border-radius:999px;margin-top:8px;}
+  @media (max-width:860px){ nav.links, .nav-cta{display:none;} .menu-btn{display:flex;} }
+  .hero-dark{position:relative;overflow:hidden;padding:150px 0 64px;background:linear-gradient(100deg,rgba(20,20,20,.95) 0%,rgba(20,20,20,.88) 36%,rgba(20,20,20,.5) 64%,rgba(20,20,20,.28) 100%),var(--ink) url('images/hero-bg.jpg') center/cover no-repeat;}
+  .hero-spark{position:absolute;color:var(--signal);font-family:sans-serif;line-height:1;pointer-events:none;}
+  .hero-spark.s1{top:110px;right:16%;font-size:32px;transform:rotate(10deg);}
+  .hero-spark.s2{top:158px;right:9%;font-size:18px;transform:rotate(-8deg);opacity:.8;}
+  .hero-dark-inner{display:grid;grid-template-columns:0.95fr 1.15fr;gap:48px;align-items:stretch;}
+  @media (max-width:900px){ .hero-dark-inner{grid-template-columns:1fr;} }
+  .hero-col-text{display:flex;flex-direction:column;}
+  .hero-badge-dark{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);color:rgba(255,243,214,.85);border-radius:999px;padding:8px 16px;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;margin-bottom:24px;width:fit-content;}
+  .hero-title-dark{font-size:50px;font-weight:900;line-height:1.16;letter-spacing:-.01em;color:#fff;margin:0 0 22px;text-transform:uppercase;}
+  @media (max-width:640px){ .hero-title-dark{font-size:32px;} }
+  .hero-lede-dark{font-size:16px;line-height:1.75;color:rgba(255,243,214,.65);max-width:420px;margin:0 0 32px;}
+  .hero-cta{width:fit-content;}
+  .hero-stats-row{display:flex;align-items:center;gap:24px;margin-top:auto;padding-top:44px;flex-wrap:wrap;}
+  .hero-stats-label{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:800;color:rgba(255,243,214,.6);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;}
+  .hero-stats-number{font-size:26px;font-weight:900;color:#fff;}
+  .hero-avatars{display:flex;}
+  .hero-avatar{width:30px;height:30px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:#fff;border:2px solid var(--ink);margin-left:-10px;}
+  .hero-avatar:first-child{margin-left:0;}
+  .hero-col-visual{display:flex;flex-direction:column;gap:22px;justify-content:flex-end;padding-bottom:8px;}
+  .hero-col-visual .hero-visual{transform:rotate(3deg);box-shadow:0 40px 60px -20px rgba(0,0,0,.55);}
+  .hero-steps{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:22px;padding:18px 22px;}
+  .hero-step{display:flex;align-items:center;gap:12px;font-size:13px;font-weight:700;color:rgba(255,243,214,.85);padding:9px 0;border-bottom:1px solid rgba(255,255,255,.08);}
+  .hero-step:last-child{border-bottom:none;}
+  .hero-step-ic{width:28px;height:28px;border-radius:9px;background:rgba(244,185,66,.18);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;}
+  .hero-about{padding-block:76px;}
+  .hero-about-title{font-size:30px;font-weight:900;line-height:1.3;margin:10px 0 0;}
+  .stat-card{border-radius:24px;padding:28px;min-height:150px;display:flex;flex-direction:column;justify-content:space-between;}
+  .stat-signal{background:var(--signal);color:#fff;}
+  .stat-ink{background:var(--ink);color:var(--cream);}
+  .stat-outline{background:#fff;border:1px solid rgba(20,20,20,.12);color:var(--ink);}
+  .stat-ic{font-size:20px;margin-bottom:20px;opacity:.9;}
+  .stat-num{font-size:32px;font-weight:900;margin-bottom:8px;}
+  .stat-cap{font-size:12.5px;line-height:1.5;opacity:.8;font-weight:600;}
+  .hero-visual{position:relative;aspect-ratio:1/1;border-radius:32px;background:linear-gradient(135deg,var(--gold),var(--gold-200),var(--signal));display:flex;align-items:center;justify-content:center;padding:40px;}
+  .hero-visual img{max-width:220px;filter:drop-shadow(0 30px 40px rgba(0,0,0,.25));}
+  .hero-visual.has-photo{padding:0;background-size:cover;background-position:center;}
+  .hero-visual.has-photo img.badge-img{display:none;}
+  .dot{width:6px;height:6px;border-radius:999px;background:var(--signal);}
+  .needs-item .emoji{font-size:30px;margin-bottom:18px;}
+  .needs-item p.q{font-weight:800;font-size:18px;line-height:1.4;margin:0 0 10px;}
+  .needs-item p.d{font-size:14px;color:rgba(20,20,20,.6);line-height:1.6;margin:0;}
+  .proc-step{position:relative;}
+  .proc-num{width:56px;height:56px;border-radius:18px;background:var(--signal);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:20px;margin-bottom:22px;}
+  .proc-step h3{font-size:20px;margin:0 0 10px;}
+  .proc-step p{font-size:14px;color:rgba(20,20,20,.6);line-height:1.6;margin:0;}
+  .mini-photo{position:relative;aspect-ratio:16/10;border-radius:16px;overflow:hidden;background:linear-gradient(135deg,var(--gold-100),var(--gold-200));background-size:cover;background-position:center;margin:16px 0 18px;}
+  .mini-photo .mini-icon{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:22px;opacity:.35;}
+  .mini-photo.has-photo .mini-icon{display:none;}
+  .work-card{position:relative;aspect-ratio:4/5;border-radius:24px;overflow:hidden;background-size:cover;background-position:center;color:#fff;}
+  .work-card .fallback-grad{position:absolute;inset:0;}
+  .work-shade{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.55),transparent 55%);}
+  .work-text{position:absolute;left:0;right:0;bottom:0;padding:28px;}
+  .work-text .tag{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;opacity:.85;margin:0 0 4px;}
+  .work-text .title{font-size:22px;font-weight:900;margin:0;}
+  .upload-overlay{position:absolute;inset:0;background:rgba(0,0,0,.45);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;cursor:grab;}.upload-overlay:active{cursor:grabbing;}.photo-zoom{display:none;align-items:center;gap:8px;background:rgba(255,255,255,.92);border-radius:999px;padding:6px 14px;}[data-work-img].has-photo .photo-zoom,[data-hero-img].has-photo .photo-zoom,[data-mini-img].has-photo .photo-zoom{display:flex;}.photo-zoom input[type=range]{width:110px;}.photo-zoom span{font-size:11px;color:rgba(20,20,20,.65);white-space:nowrap;}
+  .upload-btn{background:#fff;color:var(--ink);border:none;border-radius:999px;padding:10px 20px;font-weight:800;font-size:13px;cursor:pointer;}
+  .review-card p.stars{color:var(--signal);font-size:20px;margin:0 0 14px;}
+  .review-card p.quote{font-size:15px;line-height:1.7;color:rgba(20,20,20,.8);margin:0 0 20px;}
+  .review-card p.name{font-weight:800;margin:0;}
+  .review-card p.role{font-size:13px;color:rgba(20,20,20,.5);margin:2px 0 0;}
+  /* REVIEW page — expanded intro / stats / commitments / CTA */
+  .review-lead{max-width:640px;margin:0 auto 48px;text-align:center;color:rgba(20,20,20,.6);font-size:14.5px;line-height:1.8;}
+  .review-stats{margin-bottom:64px;}
+  .review-card .avatar-row{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+  .review-card .avatar{width:36px;height:36px;border-radius:999px;background:var(--gold-100);color:var(--ink);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex-shrink:0;}
+  .review-card .avatar-meta{display:flex;flex-direction:column;}
+  .review-card .biz-tag{display:inline-block;background:rgba(20,20,20,.06);color:rgba(20,20,20,.55);font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;margin-top:2px;width:fit-content;}
+  .commit-box{background:#fff;border:1px solid rgba(20,20,20,.08);border-radius:24px;padding:44px;margin-top:64px;}
+  .commit-box h3{font-size:20px;font-weight:900;margin:0 0 24px;}
+  .commit-list{display:grid;grid-template-columns:repeat(2,1fr);gap:20px 32px;margin:0;padding:0;list-style:none;}
+  @media (max-width:700px){ .commit-list{grid-template-columns:1fr;} }
+  .commit-list li{display:flex;gap:12px;align-items:flex-start;font-size:13.5px;color:rgba(20,20,20,.7);line-height:1.7;}
+  .commit-list li .num{flex-shrink:0;width:24px;height:24px;border-radius:8px;background:var(--gold-100);color:var(--ink);font-size:11.5px;font-weight:800;display:flex;align-items:center;justify-content:center;}
+  .review-cta{text-align:center;margin-top:64px;}
+  .review-cta p{color:rgba(20,20,20,.55);font-size:14px;margin:0 0 20px;}
+
+  .bottom-box{background:var(--ink);color:var(--cream);border-radius:40px;padding:64px 48px;position:relative;overflow:hidden;}
+  @media (max-width:640px){ .bottom-box{padding:44px 24px;} }
+  .bottom-box h2{font-size:34px;font-weight:900;margin:0 0 14px;color:var(--cream);}
+  .bottom-box p.desc{color:rgba(255,243,214,.6);line-height:1.7;margin:0 0 40px;max-width:480px;}
+  .hero-blob{position:absolute;border-radius:999px;filter:blur(46px);pointer-events:none;}
+  .bottom-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center;position:relative;}
+  @media (max-width:900px){ .bottom-grid{grid-template-columns:1fr;} }
+  .bottom-info-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:24px;padding:6px 28px;backdrop-filter:blur(6px);}
+  .bottom-info-card .info-row{padding:16px 0;border-bottom:1px solid rgba(255,255,255,.08);}
+  .bottom-info-card .info-row:last-child{border-bottom:none;}
+  .bottom-info-card .info-ic{background:rgba(244,185,66,.16);}
+  .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 40px;font-size:14px;margin-bottom:40px;}
+  @media (max-width:640px){ .info-grid{grid-template-columns:1fr;} }
+  .info-row{display:flex;align-items:center;gap:12px;}
+  .info-ic{width:36px;height:36px;border-radius:999px;background:rgba(244,185,66,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  footer.site{padding-block:40px;border-top:1px solid rgba(20,20,20,.08);}
+  .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:14px;color:rgba(20,20,20,.5);}
+  .footer-inner .soc{display:flex;gap:24px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;}
+  .footer-inner .soc a{color:rgba(20,20,20,.5);text-decoration:none;}
+  .footer-inner .soc a:hover{color:var(--signal);}
+  [contenteditable="true"]{outline:2px dashed transparent;border-radius:6px;cursor:text;transition:outline-color .15s;}
+  [contenteditable="true"]:hover{outline-color:rgba(227,27,35,.5);}
+  [contenteditable="true"]:focus{outline:2px solid var(--gold);background:rgba(244,185,66,.1);}
+  #editToggle{position:fixed;bottom:24px;right:24px;z-index:70;background:var(--ink);color:var(--cream);border:none;border-radius:999px;padding:14px 22px;font-weight:800;font-size:14px;cursor:pointer;box-shadow:0 12px 28px rgba(0,0,0,.3);display:flex;align-items:center;gap:8px;}
+  #editBar{position:fixed;left:0;right:0;bottom:0;z-index:70;background:var(--ink);color:#fff;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+  #editBar .msg{font-size:13px;color:rgba(255,255,255,.7);}
+  #editBar .actions{display:flex;gap:10px;}
+  #editBar button{border:none;border-radius:999px;padding:10px 20px;font-weight:800;font-size:13px;cursor:pointer;}
+  #editBar .save{background:var(--signal);color:#fff;}
+  #editBar .cancel{background:rgba(255,255,255,.12);color:#fff;}
+  .contact-grid{display:grid;grid-template-columns:0.85fr 1.15fr;gap:56px;align-items:start;padding-block:80px 100px;}
+  @media (max-width:900px){ .contact-grid{grid-template-columns:1fr;} }
+  .contact-info h1{font-size:34px;font-weight:900;margin:0 0 14px;}
+  .contact-info>p{color:rgba(20,20,20,.6);line-height:1.7;margin:0 0 32px;font-size:14px;}
+  .contact-info-list{display:flex;flex-direction:column;gap:18px;margin-bottom:32px;}
+  .contact-info-row{display:flex;align-items:flex-start;gap:14px;font-size:14px;color:rgba(20,20,20,.8);line-height:1.6;}
+  .contact-info-ic{width:36px;height:36px;border-radius:999px;background:var(--gold-100);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px;}
+  .contact-download-btn{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:#fff;font-weight:800;font-size:14px;border-radius:12px;padding:14px 20px;text-decoration:none;}
+  .contact-form-card{background:#fff;border:1px solid rgba(20,20,20,.08);border-radius:24px;padding:40px;}
+  .contact-form-card .form-group{margin-bottom:22px;}
+  .contact-form-card label{display:block;font-weight:700;font-size:14px;margin-bottom:10px;}
+  .contact-form-card .req{color:var(--signal);}
+  .contact-form-card input[type=text],.contact-form-card textarea{width:100%;border:1px solid rgba(20,20,20,.15);border-radius:10px;padding:12px 14px;font-size:14px;font-family:inherit;background:#fff;color:var(--ink);}
+  .contact-form-card input[type=text]::placeholder,.contact-form-card textarea::placeholder{color:rgba(20,20,20,.35);}
+  .contact-form-card textarea{resize:vertical;min-height:80px;}
+  .check-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px 20px;}
+  .check-item{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:500;cursor:pointer;}
+  .check-item input{width:16px;height:16px;accent-color:var(--signal);}
+  .privacy-box{border:1px solid rgba(20,20,20,.12);border-radius:10px;padding:14px;font-size:12.5px;line-height:1.7;color:rgba(20,20,20,.6);max-height:110px;overflow-y:auto;background:rgba(20,20,20,.02);}
+  .agree-row{display:flex;align-items:center;gap:10px;font-size:13.5px;margin:18px 0 26px;cursor:pointer;}
+  .agree-row input{width:16px;height:16px;accent-color:var(--signal);}
+  .contact-submit-btn{width:100%;background:var(--ink);color:#fff;font-weight:800;font-size:15px;border:none;border-radius:12px;padding:16px;cursor:pointer;}
+  .contact-submit-btn:hover{background:#000;}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+
+<header class="site">
+  <div class="wrap nav-inner">
+    <a href="#home" style="display:flex;align-items:center;"><img src="images/logo.png" alt="POP&amp;CON" style="height:34px;width:auto;"></a>
+    <nav class="links">
+      <a href="#company" data-nav="company" class="">Company</a><a href="#process" data-nav="process" class="active-link">Process</a><a href="#work" data-nav="work" class="">Work</a><a href="#review" data-nav="review" class="">Review</a><a href="#contact" data-nav="contact" class="">Contact</a>
+    </nav>
+    <a href="#contact" class="btn btn-signal nav-cta" style="padding:10px 20px;font-size:13px;text-transform:uppercase;">Get Started</a>
+    <button class="menu-btn" id="menuBtn" aria-label="menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+    </button>
+  </div>
+  <div id="mobileMenu" style="display: none;">
+    <a href="#company" data-nav="company" class="">Company</a><a href="#process" data-nav="process" class="active-link">Process</a><a href="#work" data-nav="work" class="">Work</a><a href="#review" data-nav="review" class="">Review</a><a href="#contact" data-nav="contact" class="">Contact</a>
+    <a href="#contact" class="cta">Get Started</a>
+  </div>
+</header>
+
+<section class="page" id="page-home" style="padding:0;">
+  <div class="hero-dark">
+    <span class="hero-spark s1" aria-hidden="true">✦</span>
+    <span class="hero-spark s2" aria-hidden="true">✦</span>
+    <div class="wrap hero-dark-inner">
+      <div class="hero-col-text">
+        <div class="hero-badge-dark"><span class="dot"></span><span data-edit="">소상공인·소브랜드 전문 브랜딩 에이전시</span></div>
+        <h1 class="hero-title-dark"><span data-edit="">작은 브랜드가</span><br><span data-edit="" style="color:var(--signal);">팝콘처럼</span> <span data-edit="">터지는 순간</span></h1>
+        <p class="hero-lede-dark" data-edit="">큰 대행사에겐 작아 보이는 브랜드도 POP&amp;CON에겐 가장 소중한 프로젝트입니다. 시장조사부터 오픈 후 운영까지, 처음부터 끝까지 함께합니다.</p>
+        <a href="#contact" class="btn btn-signal hero-cta"><span data-edit="">무료 상담 신청하기</span><span aria-hidden="true">→</span></a>
+        <div class="hero-stats-row">
+          <div>
+            <div class="hero-stats-label"><span class="dot"></span><span data-edit="">누적 프로젝트</span></div>
+            <div class="hero-stats-number" data-edit="">180+</div>
+          </div>
+          <div class="hero-avatars">
+            <span class="hero-avatar" style="background:var(--gold);">P</span>
+            <span class="hero-avatar" style="background:var(--signal);">C</span>
+            <span class="hero-avatar" style="background:var(--gold-200);color:var(--ink);">+</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-col-visual">
+        <div class="hero-steps">
+          <div class="hero-step"><span class="hero-step-ic">🔍</span><span data-edit="">시장조사로 우리 브랜드의 자리를 찾고</span></div>
+          <div class="hero-step"><span class="hero-step-ic">🎨</span><span data-edit="">한눈에 각인되는 컨셉을 정하고</span></div>
+          <div class="hero-step"><span class="hero-step-ic">🚀</span><span data-edit="">오픈 후에도 함께 운영·개선합니다</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-about wrap">
+    <div style="margin-bottom:40px;">
+      <p class="eyebrow" data-edit="">ABOUT POP&amp;CON</p>
+      <h2 class="hero-about-title" data-edit="">숫자로 보는<br>POP&amp;CON</h2>
+      <p style="color:rgba(20,20,20,.6);font-size:15px;line-height:1.8;margin:18px 0 0;max-width:560px;" data-edit="">대구에서 소상공인과 소브랜드 창업자들의 이야기를 브랜드로 옮겨온 시간들입니다. 
+큰 예산 없이도 제대로 만든 브랜드는 반드시 통한다는 것을, 숫자로 증명해왔습니다.</p>
+    </div>
+    <div class="grid g3">
+      <div class="stat-card stat-signal"><div class="stat-ic">👥</div><div class="stat-num" data-edit="">180+</div><div class="stat-cap" data-edit="">2020년부터 함께한 브랜드 수</div></div>
+      <div class="stat-card stat-ink"><div class="stat-ic">⚡</div><div class="stat-num" data-edit="">92%</div><div class="stat-cap" data-edit="">오픈 첫 달 재방문율을 끌어올린 캠페인 성공률</div></div>
+      <div class="stat-card stat-outline"><div class="stat-ic">📍</div><div class="stat-num" data-edit="">대구</div><div class="stat-cap" data-edit="">대구에 위치한 POP&amp;CON 스튜디오</div></div>
+    </div>
+  </div>
+
+  <div class="wrap" style="padding-block:80px;">
+    <p class="eyebrow" data-edit="">NEEDS</p>
+    <h2 style="font-size:32px;font-weight:900;margin:0 0 40px;" data-edit="">사장님들이 안고 있는 고민들</h2>
+    <div class="grid g3">
+      <div class="card needs-item"><div class="emoji">😭</div><p class="q" data-edit="">"홍보를 하고는 싶은데, 어디서부터 시작해야 할지 모르겠어요."</p><p class="d" data-edit="">막상 마케팅을 시작하려 해도 예산과 방향을 잡기 어려운 소상공인 사장님들이 많습니다.</p></div>
+      <div class="card needs-item"><div class="emoji">💸</div><p class="q" data-edit="">"대행사에 맡기기엔 예산이 너무 부담돼요"</p><p class="d" data-edit="">큰 대행사들은 대기업 위주라 소상공인이 접근하기엔 비용 장벽이 높습니다.</p></div>
+      <div class="card needs-item"><div class="emoji">🤔</div><p class="q" data-edit="">"우리 브랜드만의 색깔을 어떻게 표현해야 할까요?"</p><p class="d" data-edit="">경쟁 브랜드는 많은데, 우리만의 이야기를 어떻게 전달해야 할지 막막합니다.</p></div>
+    </div>
+  </div>
+
+  <div class="wrap" style="padding-block:80px;">
+    <p class="eyebrow" data-edit="">PROCESS</p>
+    <h2 style="font-size:32px;font-weight:900;margin:0 0 40px;" data-edit="">POP&amp;CON이 일하는 방식</h2>
+    <div class="grid g4">
+      <div class="proc-step"><div class="proc-num">01</div><h3 data-edit="">시장조사</h3><div class="mini-photo has-photo" data-mini-img="" style="background-image:url('images/photo-1.jpg')"><span class="mini-icon">📷</span><div class="upload-overlay" hidden=""><input type="file" accept="image/*" class="upload-input" hidden=""><button type="button" class="upload-btn">사진 변경</button><div class="photo-zoom"><input type="range" class="zoom-range" min="100" max="250" step="5" value="100" aria-label="사진 확대/축소"><span>드래그로 이동</span></div></div></div><p data-edit="">실제 오프라인으로 시장조사를 하여 브랜드에 대한 이미지와 어디서 어떻게 시작하면 좋을지 정합니다.</p></div>
+      <div class="proc-step"><div class="proc-num">02</div><h3 data-edit="">컨셉 정하기</h3><div class="mini-photo has-photo" data-mini-img="" style="background-image:url('images/photo-2.jpg')"><span class="mini-icon">📷</span><div class="upload-overlay" hidden=""><input type="file" accept="image/*" class="upload-input" hidden=""><button type="button" class="upload-btn">사진 변경</button><div class="photo-zoom"><input type="range" class="zoom-range" min="100" max="250" step="5" value="100" aria-label="사진 확대/축소"><span>드래그로 이동</span></div></div></div><p data-edit="">한눈에 각인되는 브랜드 컨셉을 함께 정합니다.</p></div>
+      <div class="proc-step"><div class="proc-num">03</div><h3 data-edit="">브랜딩 패키지</h3><div class="mini-photo has-photo" data-mini-img="" style="background-image:url('images/photo-3.jpg')"><span class="mini-icon">📷</span><div class="upload-overlay" hidden=""><input type="file" accept="image/*" class="upload-input" hidden=""><button type="button" class="upload-btn">사진 변경</button><div class="photo-zoom"><input type="range" class="zoom-range" min="100" max="250" step="5" value="100" aria-label="사진 확대/축소"><span>드래그로 이동</span></div></div></div><p data-edit="">로고부터 패키지, 매장 비주얼까지 완성합니다.</p></div>
+      <div class="proc-step"><div class="proc-num">04</div><h3 data-edit="">운영 및 개선</h3><div class="mini-photo has-photo" data-mini-img="" style="background-image:url('images/photo-4.jpg')"><span class="mini-icon">📷</span><div class="upload-overlay" hidden=""><input type="file" accept="image/*" class="upload-input" hidden=""><button type="button" class="upload-btn">사진 변경</button><div class="photo-zoom"><input type="range" class="zoom-range" min="100" max="250" step="5" value="100" aria-label="사진 확대/축소"><span>드래그로 이동</span></div></div></div><p data-edit="">오픈 이후에도 데이터를 보며 함께 개선합니다.</p></div>
+    </div>
+  </div>
+
+  <div class="wrap" style="padding-block:80px;">
+    <p class="eyebrow" data-edit="">WORK</p>
+    <h2 style="font-size:32px;font-weight:900;margin:0 0 40px;" data-edit="">함께한 브랜드들</h2>
+    <div class="grid g3">
+      <div class="work-card has-photo" data-work-img="" style="background-image:url('images/work-1.jpg');background-size:cover;background-position:center;">
+        <div class="work-shade"></div>
+        <div class="work-text"><p class="tag" data-edit="">Shabu-shabu Branding</p><p class="title" data-edit="">샤브샤브 전문점 리브랜딩</p></div>
+        <div class="upload-overlay" hidden=""><input type="file" accept="image/*" class="upload-input" hidden=""><button type="button" class="upload-btn">사진 변경</button><div class="photo-zoom"><input type="range" class="zoom-range" min="100" max="250" step="5" value="100" aria-label="사진 확대/축소"><span>드래그로 이동</span></div></div>
+      </div>
+      <div class="work-card has-photo" data-work-img="" style="background-image:url('images/work-2.jpg');background-size:cover;background-position:20% center;">
+        <div class="work-shade"></div>
+        <div class="work-text"><p class="tag" data-edit="">Photo Box Branding</p><p class="title" data-edit="">포토박스 브랜딩</p></div>
+        <div class="upload-overlay" hidden=""><input type="file" accept="image/*" class="upload-input" hidden=""><button type="button" class="upload-btn">사진 변경</button><div class="photo-zoom"><input type="range" class="zoom-range" min="100" max="250" step="5" value="100" aria-label="사진 확대/축소"><span>드래그로 이동</span></div></div>
+      </div>
+      <div class="work-card has-photo" data-work-img="" style="background-image:url('images/work-3.jpg');background-size:cover;background-position:center;">
+        <div class="work-shade"></div>
+        <div class="work-text"><p class="tag" data-edit="">Store Opening</p><p class="title" data-edit="">신규 매장 오픈 마케팅</p></div>
+        <div class="upload-overlay" hidden=""><input type="file" accept="image/*" class="upload-input" hidden=""><button type="button" class="upload-btn">사진 변경</button><div class="photo-zoom"><input type="range" class="zoom-range" min="100" max="250" step="5" value="100" aria-label="사진 확대/축소"><span>드래그로 이동</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap" style="padding-block:80px;">
+    <p class="eyebrow" style="text-align:center;" data-edit="">REVIEW</p>
+    <h2 style="font-size:32px;font-weight:900;margin:0 0 40px;text-align:center;" data-edit="">사장님들의 진짜 후기</h2>
+    <div class="grid g3">
+      <div class="card review-card"><p class="stars">★★★★★</p><p class="quote" data-edit="">"막연했던 브랜드 이미지를 저희 매장에 맞게 제대로 설정 해주셨고 그로 인해 손님들의 재방문율이 늘었어요.</p><div><br></div><p></p><p class="name" data-edit="">김O은 사장님</p><p class="role" data-edit="">샤브샤브 전문점 대표</p></div>
+      <div class="card review-card"><p class="stars">★★★★★</p><p class="quote" data-edit="">"브랜딩의 처음부터 잘 몰랐지만, 친절하게 방향성을 잘 잡아주시고 좋은 이미지를 만들어주셔서 처음하는 사업에 어려움이 없었습니다.</p><p class="name" data-edit="">박O훈 사장님</p><p class="role" data-edit="">포토박스 브랜드</p></div>
+      <div class="card review-card"><p class="stars">★★★★★</p><p class="quote" data-edit="">"오픈 이후에도 계속 관리해주셔서 든든해요. 혼자였으면 절대 못했을 거예요."</p><div><br></div><div><br></div><p></p><p class="name" data-edit="">이O정 사장님</p><p class="role" data-edit="">소품샵 대표</p></div>
+    </div>
+  </div>
+
+  <div class="wrap" style="padding-block:80px 100px;">
+    <div class="bottom-box">
+      <div class="hero-blob" style="width:320px;height:320px;background:rgba(244,185,66,.22);top:-100px;right:-80px;"></div>
+      <div class="hero-blob" style="width:300px;height:300px;background:rgba(227,27,35,.2);bottom:-110px;left:-90px;"></div>
+      <div class="bottom-grid">
+        <div style="position:relative;">
+          <img src="images/logo.png" alt="POP&amp;CON logo" style="height:30px;width:auto;margin-bottom:26px;filter:brightness(0) invert(1);">
+          <p class="eyebrow" data-edit="">CONTACT</p>
+          <h2 data-edit="">작은 브랜드가<br>팝콘처럼 터지는 순간,<br>함께 만들어요</h2>
+          <p class="desc" data-edit="">지금 바로 무료 상담을 신청하고, 우리 브랜드의 다음 단계를 함께 그려보세요.</p>
+          <a href="#contact" class="btn btn-signal"><span data-edit="">문의하기</span></a>
+        </div>
+        <div class="bottom-info-card">
+          <div class="info-grid" style="grid-template-columns:1fr;margin-bottom:0;">
+            <div class="info-row"><span class="info-ic">🏢</span><span data-edit="">POP&amp;CON Co., Ltd.</span></div>
+            <div class="info-row"><span class="info-ic">👤</span><span data-edit="">CEO. Juyong Park (박주용)</span></div>
+            <div class="info-row"><span class="info-ic">📍</span><span data-edit="">대구광역시 달서구 송현동 1919-16, 4층</span></div>
+            <div class="info-row"><span class="info-ic">📅</span><span data-edit="">Founded 2020</span></div>
+            <div class="info-row"><span class="info-ic">✉️</span><span data-edit="">tdj04217@naver.com</span></div>
+            <div class="info-row"><span class="info-ic">📱</span><span data-edit="">Tel. 010-8050-5912</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="page-company" style="background:#fff;">
+  <div class="wrap">
+    <p class="eyebrow" data-edit="">COMPANY</p>
+    <h2 style="font-size:38px;font-weight:900;margin:0 0 22px;line-height:1.3;" data-edit="">작은 브랜드의 이야기를,<br>사람들이 기억하는 광고로.</h2>
+    <p style="color:rgba(20,20,20,.6);max-width:640px;margin:0 0 36px;font-size:16px;line-height:1.85;letter-spacing:-.01em;" data-edit="">POP&amp;CON은 2020년 11월 5일, "작은 브랜드도 좋은 광고를 가질 자격이 있다"는 믿음으로 시작한 브랜딩 에이전시입니다. 대구에서 소상공인과 소브랜드 창업자들의 이야기를 직접 듣고, 그 이야기를 시장에서 통하는 브랜드와 광고로 옮기는 일을 합니다. 큰 예산 없이도 제대로 만든 브랜드가 살아남는다는 것을, 지금까지 180여 개의 브랜드와 함께 증명해왔습니다.</p>
+    <div class="mini-photo company-photo has-photo" data-mini-img="" style="background-image:url('images/photo-5.jpg')">
+      <span class="mini-icon">📷</span>
+      <div class="upload-overlay" hidden=""><input type="file" accept="image/*" class="upload-input" hidden=""><button type="button" class="upload-btn">회사 사진 추가</button><div class="photo-zoom"><input type="range" class="zoom-range" min="100" max="250" step="5" value="100" aria-label="사진 확대/축소"><span>드래그로 이동</span></div></div>
+    </div>
+
+    <p class="eyebrow" data-edit="">WHAT WE MAKE</p>
+    <h3 style="font-size:24px;font-weight:900;margin:0 0 28px;" data-edit="">우리가 만드는 광고</h3>
+    <div class="grid g4" style="margin-bottom:56px;">
+      <div class="card service-card">
+        <div class="service-icon">💌</div>
+        <p class="t" data-edit="">브랜드 필름</p>
+        <p class="d" data-edit="">사장님의 스토리를 통해서 브랜드의 이미지를 브랜딩하고 브랜드의 가치를 만들어내는 작업</p>
+      </div>
+      <div class="card service-card">
+        <div class="service-icon">📱</div>
+        <p class="t" data-edit="">SNS 숏폼 광고</p>
+        <p class="d" data-edit="">인스타그램·틱톡 알고리즘에 맞춰 설계하는 짧고 임팩트 있는 광고 콘텐츠</p>
+      </div>
+      <div class="card service-card">
+        <div class="service-icon">📦</div>
+        <p class="t" data-edit="">패키지·매장 비주얼</p>
+        <p class="d" data-edit="">제품 패키지부터 매장 사이니지까지 하나의 톤으로 이어지는 브랜드 비주얼</p>
+      </div>
+      <div class="card service-card">
+        <div class="service-icon">🎉</div>
+        <p class="t" data-edit="">오픈 프로모션 캠페인</p>
+        <p class="d" data-edit="">매장 오픈부터 초기 고객 확보까지, 
+첫 한 달을 책임지는 프로모션 광고</p>
+      </div>
+    </div>
+
+    <div class="bottom-box slogan-box">
+      <div style="position:relative;">
+        <p class="eyebrow" data-edit="">OUR SLOGAN</p>
+        <h3 data-edit="">"MAKE TRENDS POP, MAKE BRANDS MATTER"</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page active" id="page-process">
+  <div class="wrap">
+    <p class="eyebrow" data-edit="">PROCESS</p>
+    <h2 style="font-size:40px;font-weight:900;margin:0 0 14px;" data-edit="">우리가 일하는 방식</h2>
+    <p style="color:rgba(20,20,20,.6);max-width:560px;margin:0 0 28px;line-height:1.75;" data-edit="">시장조사부터 오픈 이후 운영까지
+4단계로 이어지는 촘촘한 프로세스로 사장님의 브랜드를 끝까지 책임집니다.</p>
+    <div class="proc-hero-cta">
+      <a href="#contact" class="btn btn-signal"><span data-edit="">무료 상담 신청하기</span></a>
+      <a href="#work" class="link-arrow"><span data-edit="">작업 사례 살펴보기</span><span aria-hidden="true">→</span></a>
+    </div>
+
+    <div class="bottom-box" style="margin-bottom:64px;">
+      <div class="hero-blob" style="width:280px;height:280px;background:rgba(244,185,66,.18);top:-90px;right:-70px;"></div>
+      <div class="hero-blob" style="width:260px;height:260px;background:rgba(227,27,35,.18);bottom:-100px;left:-80px;"></div>
+      <div class="proc-highlight">
+        <div>
+          <div class="ic-badge">🎯</div>
+          <p class="eyebrow" data-edit="" style="color:var(--gold);">OUR PROCESS</p>
+          <h3 data-edit="">브랜드 컨셉부터,<br>오픈 이후까지 책임집니다.</h3>
+          <p class="desc" data-edit="">원하는 오픈 일정과 예산 범위를 정하면, 지금까지 쌓아온 사례 데이터를 바탕으로 제작 기준을 잡고 단계별 진행 상황을 함께 확인합니다.</p>
+          <a href="#contact" class="btn btn-signal"><span data-edit="">우리 브랜드 상담하기</span></a>
+        </div>
+        <div class="proc-list">
+          <div class="proc-list-item"><div class="proc-num">01</div><div><h4 data-edit="">시장조사</h4><p data-edit="">상권, 경쟁사, 타겟 고객을 꼼꼼히 분석해 우리 브랜드의 기회를 찾습니다.</p></div></div>
+          <div class="proc-list-item"><div class="proc-num">02</div><div><h4 data-edit="">컨셉 정하기</h4><p data-edit="">사장님만의 이야기와 강점을 담아 한 문장으로 설명되는 브랜드 컨셉을 만듭니다.</p></div></div>
+          <div class="proc-list-item"><div class="proc-num">03</div><div><h4 data-edit="">브랜딩 패키지</h4><p data-edit="">로고, 패키지, 매장 디자인, SNS 콘텐츠까지 하나의 톤으로 완성합니다.</p></div></div>
+          <div class="proc-list-item"><div class="proc-num">04</div><div><h4 data-edit="">운영 및 개선</h4><p data-edit="">오픈 후에도 데이터를 보며 마케팅과 운영 전략을 지속적으로 개선합니다.</p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <p class="eyebrow" data-edit="">WHAT WE CHECK</p>
+    <h3 style="font-size:24px;font-weight:900;margin:0 0 28px;" data-edit="">단계마다 꼼꼼히 확인하는 것들</h3>
+    <div class="grid g3" style="margin-bottom:64px;">
+      <div class="card service-card"><div class="service-icon">🔍</div><p class="t" data-edit="">상권·타겟 분석</p><p class="d" data-edit="">주변 상권과 경쟁사, 타겟 고객 데이터를 기반으로 브랜드 포지셔닝을 정합니다.</p></div>
+      <div class="card service-card"><div class="service-icon">💬</div><p class="t" data-edit="">컨셉 워크숍</p><p class="d" data-edit="">사장님과 직접 만나 브랜드만의 스토리와 톤앤매너를 함께 정리합니다.</p></div>
+      <div class="card service-card"><div class="service-icon">🎨</div><p class="t" data-edit="">디자인 시안 검토</p><p class="d" data-edit="">로고·패키지·매장 디자인 시안을 단계별로 공유하고 피드백을 반영합니다.</p></div>
+      <div class="card service-card"><div class="service-icon">💰</div><p class="t" data-edit="">예산·일정 관리</p><p class="d" data-edit="">정해진 예산과 오픈 일정에 맞춰 제작 범위와 우선순위를 조정합니다.</p></div>
+      <div class="card service-card"><div class="service-icon">🏪</div><p class="t" data-edit="">오픈 현장 지원</p><p class="d" data-edit="">매장 오픈 당일 사이니지·콘텐츠 세팅을 함께 확인합니다.</p></div>
+      <div class="card service-card"><div class="service-icon">📊</div><p class="t" data-edit="">데이터 기반 개선</p><p class="d" data-edit="">오픈 이후 반응을 데이터로 살펴보고 운영·마케팅 전략을 지속적으로 다듬습니다.</p></div>
+    </div>
+
+    <p class="eyebrow" data-edit="">CASE IN PROCESS</p>
+    <h3 style="font-size:24px;font-weight:900;margin:0 0 8px;" data-edit="">실제로 이렇게 진행했어요</h3>
+    <p style="color:rgba(20,20,20,.55);margin:0;" data-edit="">우리 프로세스가 실제 브랜드에 적용된 사례입니다.</p>
+
+    <div class="example-card">
+      <div class="example-photo" style="background-image:url('images/work-1.jpg');"></div>
+      <div class="example-text">
+        <p class="eyebrow" data-edit="">샤브샤브 전문점 리브랜딩</p>
+        <h4 style="font-size:20px;font-weight:900;margin:0 0 12px;" data-edit="">막연했던 가게 이야기를, 또렷한 브랜드로</h4>
+        <ul class="example-bullets">
+          <li data-edit="">상권조사로 회식 수요와 주요 타겟을 확인</li>
+          <li data-edit="">'진한 국물'을 중심으로 한 브랜드 컨셉 확정</li>
+          <li data-edit="">로고·메뉴판·SNS 톤앤매너 통일</li>
+        </ul>
+        <p class="example-meta" data-edit="">진행 기간: 6주 · 시장조사~오픈 프로모션까지</p>
+        <div class="example-links">
+          <a href="#contact" class="btn btn-signal"><span data-edit="">이 사례로 상담하기</span></a>
+          <a href="#work" class="link-arrow"><span data-edit="">다른 사례 보기</span><span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="example-card rev">
+      <div class="example-photo" style="background-image:url('images/work-2.jpg');background-position:20% center;"></div>
+      <div class="example-text">
+        <p class="eyebrow" data-edit="">포토박스 브랜딩</p>
+        <h4 style="font-size:20px;font-weight:900;margin:0 0 12px;" data-edit="">사진 찍고 싶은 공간으로, 컨셉부터 다시</h4>
+        <ul class="example-bullets">
+          <li data-edit="">타겟 고객의 SNS 업로드 패턴 분석</li>
+          <li data-edit="">'혼자서도, 함께여도' 컨셉으로 공간 리뉴얼</li>
+          <li data-edit="">포토존·소품·SNS 콘텐츠 톤 통일</li>
+        </ul>
+        <p class="example-meta" data-edit="">진행 기간: 5주 · 컨셉 워크숍~오픈 콘텐츠까지</p>
+        <div class="example-links">
+          <a href="#contact" class="btn btn-signal"><span data-edit="">이 사례로 상담하기</span></a>
+          <a href="#work" class="link-arrow"><span data-edit="">다른 사례 보기</span><span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="example-card">
+      <div class="example-photo" style="background-image:url('images/work-3.jpg');"></div>
+      <div class="example-text">
+        <p class="eyebrow" data-edit="">신규 매장 오픈 마케팅</p>
+        <h4 style="font-size:20px;font-weight:900;margin:0 0 12px;" data-edit="">오픈 첫 달, 확실한 인상을 남기도록</h4>
+        <ul class="example-bullets">
+          <li data-edit="">오픈 전 예산·일정에 맞춘 제작 우선순위 조정</li>
+          <li data-edit="">매장 사이니지·SNS 콘텐츠 동시 제작</li>
+          <li data-edit="">오픈 후 데이터로 프로모션 전략 개선</li>
+        </ul>
+        <p class="example-meta" data-edit="">진행 기간: 4주 · 브랜딩 패키지~오픈 운영까지</p>
+        <div class="example-links">
+          <a href="#contact" class="btn btn-signal"><span data-edit="">이 사례로 상담하기</span></a>
+          <a href="#work" class="link-arrow"><span data-edit="">다른 사례 보기</span><span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-box" style="margin:64px 0 0;">
+      <div class="hero-blob" style="width:260px;height:260px;background:rgba(244,185,66,.16);top:-80px;left:-60px;"></div>
+      <p class="eyebrow" data-edit="" style="color:var(--gold);">TOGETHER WE CHECK</p>
+      <h3 style="font-size:26px;font-weight:900;margin:0 0 30px;color:var(--cream);" data-edit="">함께 확인할 내용</h3>
+      <div class="grid g3" style="position:relative;">
+        <div>
+          <p style="font-weight:800;color:var(--cream);margin:0 0 8px;" data-edit="">시장조사·컨셉 리포트</p>
+          <p style="font-size:13px;color:rgba(255,243,214,.6);line-height:1.7;margin:0;" data-edit="">상권과 경쟁사 조사 결과를 브랜드 컨셉 자료로 정리해 드립니다.</p>
+        </div>
+        <div>
+          <p style="font-weight:800;color:var(--cream);margin:0 0 8px;" data-edit="">단계별 일정·예산</p>
+          <p style="font-size:13px;color:rgba(255,243,214,.6);line-height:1.7;margin:0;" data-edit="">진행 단계에 맞춘 일정과 예산 기준을 미리 공유하고 조율합니다.</p>
+        </div>
+        <div>
+          <p style="font-weight:800;color:var(--cream);margin:0 0 8px;" data-edit="">오픈 이후 결과까지</p>
+          <p style="font-size:13px;color:rgba(255,243,214,.6);line-height:1.7;margin:0;" data-edit="">오픈 후 반응과 매출 데이터를 함께 살펴보고 다음 전략을 정합니다.</p>
+        </div>
+      </div>
+      <a href="#company" class="link-arrow" style="color:var(--cream);margin-top:34px;display:inline-flex;"><span data-edit="">POP&amp;CON 서비스 자세히 보기</span><span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="page-work" style="background:#fff;">
+  <div class="wrap">
+    <p class="eyebrow" data-edit="">WORK</p>
+    <h2 style="font-size:40px;font-weight:900;margin:0 0 56px;" data-edit="">함께한 브랜드들</h2>
+    <div class="grid g3">
+      <div class="work-card has-photo" data-work-img="" style="background-image:url('images/work-1.jpg');background-size:cover;background-position:center;">
+        <div class="work-shade"></div>
+        <div class="work-text"><p class="tag" data-edit="">Shabu-shabu Branding</p><p class="title" data-edit="">샤브샤브 전문점 리브랜딩</p></div>
+        <div class="upload-overlay" hidden=""><input type="file" accept="image/*" class="upload-input" hidden=""><button type="button" class="upload-btn">사진 변경</button><div class="photo-zoom"><input type="range" class="zoom-range" min="100" max="250" step="5" value="100" aria-label="사진 확대/축소"><span>드래그로 이동</span></div></div>
+      </div>
+      <div class="work-card has-photo" data-work-img="" style="background-image:url('images/work-2.jpg');background-size:cover;background-position:20% center;">
+        <div class="work-shade"></div>
+        <div class="work-text"><p class="tag" data-edit="">Photo Box Branding</p><p class="title" data-edit="">포토박스 브랜딩</p></div>
+        <div class="upload-overlay" hidden=""><input type="file" accept="image/*" class="upload-input" hidden=""><button type="button" class="upload-btn">사진 변경</button><div class="photo-zoom"><input type="range" class="zoom-range" min="100" max="250" step="5" value="100" aria-label="사진 확대/축소"><span>드래그로 이동</span></div></div>
+      </div>
+      <div class="work-card has-photo" data-work-img="" style="background-image:url('images/work-3.jpg');background-size:cover;background-position:center;">
+        <div class="work-shade"></div>
+        <div class="work-text"><p class="tag" data-edit="">Store Opening</p><p class="title" data-edit="">신규 매장 오픈 마케팅</p></div>
+        <div class="upload-overlay" hidden=""><input type="file" accept="image/*" class="upload-input" hidden=""><button type="button" class="upload-btn">사진 변경</button><div class="photo-zoom"><input type="range" class="zoom-range" min="100" max="250" step="5" value="100" aria-label="사진 확대/축소"><span>드래그로 이동</span></div></div>
+      </div>
+    </div>
+
+    <div class="work-sub">
+      <p class="eyebrow" data-edit="">ACCOUNT CONSULTING</p>
+      <h3 class="sec-title" data-edit="">계정 컨설팅 · Before &amp; After</h3>
+      <p class="sec-desc" data-edit="">업종별 계정 진단을 통해 문제를 정의하고, 톤앤매너부터 콘텐츠 구조까지 재정비합니다.</p>
+      <div class="case-grid">
+      <div class="case-card"><span class="case-badge" data-edit="">뷰티샵</span>
+        <div class="ba-pair">
+          <div class="ba-block before"><span class="ba-label" data-edit="">BEFORE</span><div class="ba-swatch" style="background:rgba(20,20,20,.12);"></div></div>
+          <span class="ba-arrow">→</span>
+          <div class="ba-block after"><span class="ba-label" data-edit="">AFTER</span><div class="ba-swatch" style="background:var(--signal);opacity:.85;"></div></div>
+        </div>
+        <ul class="case-bullets"><li data-edit="">인스타그램 피드가 통일감 없이 산발적으로 업로드됨</li><li data-edit="">시술 카테고리별 콘텐츠 구조와 색감 톤을 정리</li></ul>
+      </div>
+      <div class="case-card"><span class="case-badge" data-edit="">헤어샵</span>
+        <div class="ba-pair">
+          <div class="ba-block before"><span class="ba-label" data-edit="">BEFORE</span><div class="ba-swatch" style="background:rgba(20,20,20,.12);"></div></div>
+          <span class="ba-arrow">→</span>
+          <div class="ba-block after"><span class="ba-label" data-edit="">AFTER</span><div class="ba-swatch" style="background:var(--signal);opacity:.85;"></div></div>
+        </div>
+        <ul class="case-bullets"><li data-edit="">예약 문의로 이어지는 콘텐츠 부재</li><li data-edit="">비포애프터 중심의 후킹 콘텐츠 구조로 전환</li></ul>
+      </div>
+      <div class="case-card"><span class="case-badge" data-edit="">네일샵</span>
+        <div class="ba-pair">
+          <div class="ba-block before"><span class="ba-label" data-edit="">BEFORE</span><div class="ba-swatch" style="background:rgba(20,20,20,.12);"></div></div>
+          <span class="ba-arrow">→</span>
+          <div class="ba-block after"><span class="ba-label" data-edit="">AFTER</span><div class="ba-swatch" style="background:var(--signal);opacity:.85;"></div></div>
+        </div>
+        <ul class="case-bullets"><li data-edit="">브랜드 계정인지 개인 계정인지 불분명</li><li data-edit="">프로필·하이라이트·인사말 전면 재정비</li></ul>
+      </div>
+      <div class="case-card"><span class="case-badge" data-edit="">라멘집</span>
+        <div class="ba-pair">
+          <div class="ba-block before"><span class="ba-label" data-edit="">BEFORE</span><div class="ba-swatch" style="background:rgba(20,20,20,.12);"></div></div>
+          <span class="ba-arrow">→</span>
+          <div class="ba-block after"><span class="ba-label" data-edit="">AFTER</span><div class="ba-swatch" style="background:var(--signal);opacity:.85;"></div></div>
+        </div>
+        <ul class="case-bullets"><li data-edit="">메뉴 사진 위주로 재방문 유도 콘텐츠 부족</li><li data-edit="">웨이팅·후기 콘텐츠 비중을 늘려 신뢰도 강화</li></ul>
+      </div>
+      <div class="case-card"><span class="case-badge" data-edit="">애견샵</span>
+        <div class="ba-pair">
+          <div class="ba-block before"><span class="ba-label" data-edit="">BEFORE</span><div class="ba-swatch" style="background:rgba(20,20,20,.12);"></div></div>
+          <span class="ba-arrow">→</span>
+          <div class="ba-block after"><span class="ba-label" data-edit="">AFTER</span><div class="ba-swatch" style="background:var(--signal);opacity:.85;"></div></div>
+        </div>
+        <ul class="case-bullets"><li data-edit="">고객 타겟이 불분명한 콘텐츠 톤앤매너</li><li data-edit="">반려인 커뮤니티向 톤으로 메시지 재설계</li></ul>
+      </div>
+      </div>
+    </div>
+
+    <div class="work-sub">
+      <p class="eyebrow" data-edit="">FEED DESIGN</p>
+      <h3 class="sec-title" data-edit="">피드 디자인 개선 · Before &amp; After</h3>
+      <p class="sec-desc" data-edit="">색감과 레이아웃 규칙을 세워 브랜드 아이덴티티가 살아있는 피드로 리디자인합니다.</p>
+      <div class="case-grid">
+      <div class="case-card"><span class="case-badge" data-edit="">뷰티샵</span>
+        <div class="feed-mock">
+          <div class="feed-phone">
+            <span class="feed-label" data-edit="">BEFORE</span>
+            <div class="feed-grid">
+              <div style="background:#d8c9a3;"></div><div style="background:#8a9a6b;"></div><div style="background:#c96b4a;"></div>
+              <div style="background:#4a6b8a;"></div><div style="background:#b9975a;"></div><div style="background:#6b4a8a;"></div>
+              <div style="background:#8a4a5a;"></div><div style="background:#5a8a4a;"></div><div style="background:#a3a3a3;"></div>
+            </div>
+          </div>
+          <span class="ba-arrow">→</span>
+          <div class="feed-phone after">
+            <span class="feed-label" data-edit="">AFTER</span>
+            <div class="feed-grid">
+              <div style="background:#F4B942;"></div><div style="background:#FCE6AD;"></div><div style="background:#141414;"></div>
+              <div style="background:#FCE6AD;"></div><div style="background:#F4B942;"></div><div style="background:#141414;"></div>
+              <div style="background:#141414;"></div><div style="background:#FCE6AD;"></div><div style="background:#F4B942;"></div>
+            </div>
+          </div>
+        </div>
+        <ul class="case-bullets"><li data-edit="">색감 통일 · 파스텔 톤 정리</li><li data-edit="">시술 전/후 배치 규칙화</li></ul>
+      </div>
+      <div class="case-card"><span class="case-badge" data-edit="">에스테틱</span>
+        <div class="feed-mock">
+          <div class="feed-phone">
+            <span class="feed-label" data-edit="">BEFORE</span>
+            <div class="feed-grid">
+              <div style="background:#d8c9a3;"></div><div style="background:#8a9a6b;"></div><div style="background:#c96b4a;"></div>
+              <div style="background:#4a6b8a;"></div><div style="background:#b9975a;"></div><div style="background:#6b4a8a;"></div>
+              <div style="background:#8a4a5a;"></div><div style="background:#5a8a4a;"></div><div style="background:#a3a3a3;"></div>
+            </div>
+          </div>
+          <span class="ba-arrow">→</span>
+          <div class="feed-phone after">
+            <span class="feed-label" data-edit="">AFTER</span>
+            <div class="feed-grid">
+              <div style="background:#F4B942;"></div><div style="background:#FCE6AD;"></div><div style="background:#141414;"></div>
+              <div style="background:#FCE6AD;"></div><div style="background:#F4B942;"></div><div style="background:#141414;"></div>
+              <div style="background:#141414;"></div><div style="background:#FCE6AD;"></div><div style="background:#F4B942;"></div>
+            </div>
+          </div>
+        </div>
+        <ul class="case-bullets"><li data-edit="">여백을 살린 미니멀 레이아웃</li><li data-edit="">핵심 시술 3종 고정 노출</li></ul>
+      </div>
+      <div class="case-card"><span class="case-badge" data-edit="">펜션</span>
+        <div class="feed-mock">
+          <div class="feed-phone">
+            <span class="feed-label" data-edit="">BEFORE</span>
+            <div class="feed-grid">
+              <div style="background:#d8c9a3;"></div><div style="background:#8a9a6b;"></div><div style="background:#c96b4a;"></div>
+              <div style="background:#4a6b8a;"></div><div style="background:#b9975a;"></div><div style="background:#6b4a8a;"></div>
+              <div style="background:#8a4a5a;"></div><div style="background:#5a8a4a;"></div><div style="background:#a3a3a3;"></div>
+            </div>
+          </div>
+          <span class="ba-arrow">→</span>
+          <div class="feed-phone after">
+            <span class="feed-label" data-edit="">AFTER</span>
+            <div class="feed-grid">
+              <div style="background:#F4B942;"></div><div style="background:#FCE6AD;"></div><div style="background:#141414;"></div>
+              <div style="background:#FCE6AD;"></div><div style="background:#F4B942;"></div><div style="background:#141414;"></div>
+              <div style="background:#141414;"></div><div style="background:#FCE6AD;"></div><div style="background:#F4B942;"></div>
+            </div>
+          </div>
+        </div>
+        <ul class="case-bullets"><li data-edit="">계절감 있는 커버 이미지 우선 배치</li><li data-edit="">예약 링크 상단 고정</li></ul>
+      </div>
+      <div class="case-card"><span class="case-badge" data-edit="">카페</span>
+        <div class="feed-mock">
+          <div class="feed-phone">
+            <span class="feed-label" data-edit="">BEFORE</span>
+            <div class="feed-grid">
+              <div style="background:#d8c9a3;"></div><div style="background:#8a9a6b;"></div><div style="background:#c96b4a;"></div>
+              <div style="background:#4a6b8a;"></div><div style="background:#b9975a;"></div><div style="background:#6b4a8a;"></div>
+              <div style="background:#8a4a5a;"></div><div style="background:#5a8a4a;"></div><div style="background:#a3a3a3;"></div>
+            </div>
+          </div>
+          <span class="ba-arrow">→</span>
+          <div class="feed-phone after">
+            <span class="feed-label" data-edit="">AFTER</span>
+            <div class="feed-grid">
+              <div style="background:#F4B942;"></div><div style="background:#FCE6AD;"></div><div style="background:#141414;"></div>
+              <div style="background:#FCE6AD;"></div><div style="background:#F4B942;"></div><div style="background:#141414;"></div>
+              <div style="background:#141414;"></div><div style="background:#FCE6AD;"></div><div style="background:#F4B942;"></div>
+            </div>
+          </div>
+        </div>
+        <ul class="case-bullets"><li data-edit="">시그니처 메뉴 반복 노출</li><li data-edit="">촬영 톤 &amp; 보정 값 통일</li></ul>
+      </div>
+      <div class="case-card"><span class="case-badge" data-edit="">네일아트</span>
+        <div class="feed-mock">
+          <div class="feed-phone">
+            <span class="feed-label" data-edit="">BEFORE</span>
+            <div class="feed-grid">
+              <div style="background:#d8c9a3;"></div><div style="background:#8a9a6b;"></div><div style="background:#c96b4a;"></div>
+              <div style="background:#4a6b8a;"></div><div style="background:#b9975a;"></div><div style="background:#6b4a8a;"></div>
+              <div style="background:#8a4a5a;"></div><div style="background:#5a8a4a;"></div><div style="background:#a3a3a3;"></div>
+            </div>
+          </div>
+          <span class="ba-arrow">→</span>
+          <div class="feed-phone after">
+            <span class="feed-label" data-edit="">AFTER</span>
+            <div class="feed-grid">
+              <div style="background:#F4B942;"></div><div style="background:#FCE6AD;"></div><div style="background:#141414;"></div>
+              <div style="background:#FCE6AD;"></div><div style="background:#F4B942;"></div><div style="background:#141414;"></div>
+              <div style="background:#141414;"></div><div style="background:#FCE6AD;"></div><div style="background:#F4B942;"></div>
+            </div>
+          </div>
+        </div>
+        <ul class="case-bullets"><li data-edit="">디자인별 그리드 정렬</li><li data-edit="">예약 문의 CTA 강조</li></ul>
+      </div>
+      </div>
+    </div>
+
+    <div class="work-sub">
+      <p class="eyebrow" data-edit="">RESULTS</p>
+      <h3 class="sec-title" data-edit="">인사이트로 보는 변화</h3>
+      <p class="sec-desc" data-edit="">숫자로 증명하는 컨설팅 성과. 실제 운영 데이터를 기반으로 한 케이스입니다.</p>
+      
+    <div class="insight-grid">
+      <div class="insight-card">
+        <p class="insight-loc" data-edit="">홍대 · 네일샵</p>
+        <h4 data-edit="">팔로워 대비 저장수 <span class="hl" data-edit="">+561%</span> 증가</h4>
+        <div class="bar-chart"><div class="bar" style="height:22%;"><span data-edit="">18</span></div><div class="bar" style="height:34%;"><span data-edit="">27</span></div><div class="bar" style="height:58%;"><span data-edit="">64</span></div><div class="bar" style="height:100%; background:var(--signal);"><span data-edit="">561%</span></div></div>
+        <div class="bar-chart-labels"><span data-edit="">1개월차</span><span data-edit="">2개월차</span><span data-edit="">3개월차</span><span data-edit="">4개월차</span></div>
+      </div>
+      <div class="insight-card">
+        <p class="insight-loc" data-edit="">종로 · 쥬얼리샵</p>
+        <h4 data-edit="">프로필 진입 후 <span class="hl" data-edit="">문의 전환</span> 개선</h4>
+        <div class="ui-compare">
+          <div class="ui-box"><span class="ui-label" data-edit="">BEFORE</span><div class="ui-row" style="width:70%;"></div><div class="ui-row" style="width:40%;"></div><div class="ui-row" style="width:55%;"></div></div>
+          <span class="ba-arrow">→</span>
+          <div class="ui-box after"><span class="ui-label" data-edit="">AFTER</span><div class="ui-row" style="width:100%;"></div><div class="ui-row" style="width:85%;"></div><div class="ui-row" style="width:90%;"></div></div>
+        </div>
+      </div>
+      <div class="insight-card">
+        <p class="insight-loc" data-edit="">연남동 · 고깃집</p>
+        <h4 data-edit=""><span class="hl" data-edit="">매출 2배</span> 증가</h4>
+        <div class="bar-chart"><div class="bar" style="height:45%;"><span data-edit="">1주차</span></div><div class="bar" style="height:70%;"><span data-edit="">3주차</span></div><div class="bar on" style="height:100%;"><span data-edit="">2배</span></div></div>
+        <div class="bar-chart-labels"><span data-edit="">운영 1주차</span><span data-edit="">운영 3주차</span><span data-edit="">운영 8주차</span></div>
+      </div>
+    </div>
+    </div>
+
+    <div class="work-sub">
+      <p class="eyebrow" data-edit="">FULL CASE STUDY</p>
+      
+    <div class="narrative-box">
+      <p class="eyebrow" data-edit="">CASE STUDY</p>
+      <h3 data-edit="">"유산균 하나로" — <span class="hl" data-edit="">반려동물 유산균</span> 마케팅 성공사례</h3>
+      <p class="lead" data-edit="">단순 성분 나열형 광고로는 반려인의 마음을 움직이지 못한다는 진단에서 출발해, 문제 정의부터 실행까지 전 과정을 재설계한 캠페인입니다.</p>
+      <div class="phase-row">
+        <div class="phase-item"><div class="phase-num">01</div><h4 data-edit="">문제 · 진단</h4><p data-edit="">경쟁 제품과 성분 차별점이 잘 전달되지 않고, 광고 소재가 성분표 중심이라 반려인의 실제 고민(냄새·장 건강·기호성)과 연결되지 않음.</p></div>
+        <div class="phase-item"><div class="phase-num">02</div><h4 data-edit="">솔루션</h4><p data-edit="">반려동물의 일상 변화(대변 상태·활력·식욕)를 보여주는 비포애프터 콘텐츠로 전환하고, 수의사 코멘트를 더해 신뢰 요소를 보강.</p></div>
+        <div class="phase-item"><div class="phase-num">03</div><h4 data-edit="">실행 전략</h4><p data-edit="">반려동물 커뮤니티 인플루언서 시딩과 오가닉 콘텐츠를 병행하고, 구매 전환 리텐션을 위한 정기구독 혜택을 연동해 재구매율을 높임.</p></div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="page-review">
+  <div class="wrap">
+    <p class="eyebrow" style="text-align:center;" data-edit="">REVIEW</p>
+    <h2 style="font-size:40px;font-weight:900;margin:0 0 20px;text-align:center;" data-edit="">사장님들의 진짜 후기</h2>
+    <p class="review-lead" data-edit="">숫자만 보여드리지 않습니다. 함께 브랜드를 만든 사장님들이 직접 남겨주신 이야기로, POP&amp;CON이 어떻게 일하는지 확인해보세요.</p>
+
+    <div class="grid g3 review-stats">
+      <div class="stat-card stat-signal"><div class="stat-ic">🤝</div><div class="stat-num" data-edit="">92%</div><div class="stat-cap" data-edit="">협업 종료 후 재계약 · 추가 의뢰 비율</div></div>
+      <div class="stat-card stat-ink"><div class="stat-ic">⭐</div><div class="stat-num" data-edit="">4.9/5</div><div class="stat-cap" data-edit="">고객 만족도 설문 평균 점수</div></div>
+      <div class="stat-card stat-outline"><div class="stat-ic">📋</div><div class="stat-num" data-edit="">180+</div><div class="stat-cap" data-edit="">후기를 남겨주신 누적 브랜드 수</div></div>
+    </div>
+
+    <div class="grid g3">
+      <div class="card review-card">
+        <div class="avatar-row"><div class="avatar" data-edit="">김</div><div class="avatar-meta"><p class="name" data-edit="">김O은 사장님</p><span class="biz-tag" data-edit="">샤브샤브 전문점 대표</span></div></div>
+        <p class="stars">★★★★★</p>
+        <p class="quote" data-edit="">"막연했던 저희 샤브샤브 가게 이야기를 브랜드로 완성해주셨어요. 이제는 손님들이 먼저 육수 컨셉을 물어보세요."</p>
+      </div>
+      <div class="card review-card">
+        <div class="avatar-row"><div class="avatar" data-edit="">박</div><div class="avatar-meta"><p class="name" data-edit="">박O훈 사장님</p><span class="biz-tag" data-edit="">포토박스 브랜드</span></div></div>
+        <p class="stars">★★★★★</p>
+        <p class="quote" data-edit="">"브랜딩 바꾸고 나서 사진 찍으러 오시는 분들이 SNS에 먼저 올려주세요. 재방문 손님도 확실히 늘었어요."</p>
+      </div>
+      <div class="card review-card">
+        <div class="avatar-row"><div class="avatar" data-edit="">이</div><div class="avatar-meta"><p class="name" data-edit="">이O정 사장님</p><span class="biz-tag" data-edit="">소품샵 대표</span></div></div>
+        <p class="stars">★★★★★</p>
+        <p class="quote" data-edit="">"오픈 이후에도 계속 관리해주셔서 든든해요. 혼자였으면 절대 못했을 거예요."</p>
+      </div>
+      <div class="card review-card">
+        <div class="avatar-row"><div class="avatar" data-edit="">최</div><div class="avatar-meta"><p class="name" data-edit="">최O아 사장님</p><span class="biz-tag" data-edit="">네일샵 대표</span></div></div>
+        <p class="stars">★★★★★</p>
+        <p class="quote" data-edit="">"계정 컨설팅 받고 나서 예약 문의가 눈에 띄게 늘었어요. 톤앤매너를 이렇게까지 신경 써주실 줄 몰랐습니다."</p>
+      </div>
+      <div class="card review-card">
+        <div class="avatar-row"><div class="avatar" data-edit="">정</div><div class="avatar-meta"><p class="name" data-edit="">정O수 사장님</p><span class="biz-tag" data-edit="">고깃집 대표</span></div></div>
+        <p class="stars">★★★★★</p>
+        <p class="quote" data-edit="">"매출로 바로 이어질 거라 기대 안 했는데, 8주 만에 확실히 체감했어요. 데이터로 보여주시니 더 신뢰가 갔습니다."</p>
+      </div>
+      <div class="card review-card">
+        <div class="avatar-row"><div class="avatar" data-edit="">한</div><div class="avatar-meta"><p class="name" data-edit="">한O미 사장님</p><span class="biz-tag" data-edit="">펜션 운영</span></div></div>
+        <p class="stars">★★★★★</p>
+        <p class="quote" data-edit="">"피드 디자인만 바꿨을 뿐인데 문의 채널의 반응이 완전히 달라졌어요. 예약 전환까지 신경 써주셔서 감사합니다."</p>
+      </div>
+    </div>
+
+    <div class="commit-box">
+      <h3 data-edit="">협업 시 이런 걸 약속드립니다</h3>
+      <ul class="commit-list"><li><span class="num">01</span><span data-edit="">초기 진단부터 실행까지 담당 디렉터가 끝까지 함께합니다.</span></li><li><span class="num">02</span><span data-edit="">월 1회 이상 정기 리포트로 성과를 투명하게 공유합니다.</span></li><li><span class="num">03</span><span data-edit="">업종별 데이터를 기반으로 콘텐츠 방향을 제안합니다.</span></li><li><span class="num">04</span><span data-edit="">협업 종료 후에도 최소 1개월 사후 모니터링을 지원합니다.</span></li></ul>
+    </div>
+
+    <div class="review-cta">
+      <p data-edit="">우리 브랜드도 이런 후기를 남길 수 있을지, 편하게 문의해보세요.</p>
+      <a href="#contact" data-nav="contact" class="btn btn-signal">문의하기</a>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="page-contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h1 data-edit="">Contact Us</h1>
+        <p data-edit="">문의하실 부분이 있으시면 내용을 남겨주세요.<br>빠른 시일 내에 연락 드리겠습니다.</p>
+        <div class="contact-info-list">
+          <div class="contact-info-row"><span class="contact-info-ic">📍</span><span data-edit="">대구광역시 달서구 송현동 1919-16, 4층</span></div>
+          <div class="contact-info-row"><span class="contact-info-ic">📞</span><span data-edit="">Tel. 010-8050-5912</span></div>
+          <div class="contact-info-row"><span class="contact-info-ic">✉️</span><span data-edit="">tdj04217@naver.com</span></div>
+        </div>
+      </div>
+      <div class="contact-form-card">
+        <form id="contactForm">
+          <div class="form-group">
+            <label>브랜드명(담당자) <span class="req">*</span></label>
+            <input type="text" name="company" placeholder="브랜드명(담당자)를 입력하세요.">
+          </div>
+          <div class="form-group">
+            <label>연락처 <span class="req">*</span></label>
+            <input type="text" name="phone" placeholder="연락처를 입력하세요.">
+          </div>
+          <div class="form-group">
+            <label>광고 유형 (다중 선택 가능) <span class="req">*</span></label>
+            <div class="check-grid">
+              <label class="check-item"><input type="checkbox" name="adType" value="미지정"><span>미지정</span></label>
+              <label class="check-item"><input type="checkbox" name="adType" value="검색광고"><span>검색광고</span></label>
+              <label class="check-item"><input type="checkbox" name="adType" value="배너광고"><span>배너광고</span></label>
+              <label class="check-item"><input type="checkbox" name="adType" value="SNS광고"><span>SNS광고</span></label>
+              <label class="check-item"><input type="checkbox" name="adType" value="바이럴광고"><span>바이럴광고</span></label>
+              <label class="check-item"><input type="checkbox" name="adType" value="영상광고"><span>영상광고</span></label>
+              <label class="check-item"><input type="checkbox" name="adType" value="E-Commerce"><span>E-Commerce</span></label>
+              <label class="check-item"><input type="checkbox" name="adType" value="라이브커머스"><span>라이브커머스</span></label>
+              <label class="check-item"><input type="checkbox" name="adType" value="콘텐츠제작"><span>콘텐츠제작</span></label>
+              <label class="check-item"><input type="checkbox" name="adType" value="기타"><span>기타</span></label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>홈페이지 URL</label>
+            <input type="text" name="website" placeholder="홈페이지 URL을 입력하세요.">
+          </div>
+          <div class="form-group">
+            <label>이메일</label>
+            <input type="text" name="email" placeholder="이메일을 입력하세요.">
+          </div>
+          <div class="form-group">
+            <label>의뢰 범위 및 내용</label>
+            <textarea rows="3" name="message" placeholder="편하게 원하시는 마케팅에 대해 남겨주세요."></textarea>
+          </div>
+          <div class="form-group">
+            <label>개인정보 수집이용에 대한 동의</label>
+            <div class="privacy-box" data-edit="">회원님의 소중한 개인정보는 다음과 같은 정책에 따라 수집 및 이용됩니다. 저희 POP&amp;CON에서는 해당 목적에 연관되는 개인정보만을 수집하며, 수집된 정보를 투명하고 안전하게 보호 관리할 것을 약속합니다. 이에 개인정보 수집 및 이용에 대한 동의를 구합니다.</div>
+          </div>
+          <label class="agree-row"><input type="checkbox" name="agree" required=""><span>개인정보 수집 및 이용에 동의합니다.</span></label>
+          <button type="submit" class="contact-submit-btn" id="contactSubmitBtn">제출하기</button>
+          <div id="contactSubmitMsg" style="margin-top:12px;font-size:13px;text-align:center;min-height:18px;"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap footer-inner">
+    <img src="images/logo.png" alt="POP&amp;CON" style="height:22px;width:auto;opacity:.7;">
+    <p style="margin:0;" data-edit="">© 2020 POP&amp;CON. All rights reserved.</p>
+    <div class="soc"><a href="https://www.instagram.com/popcon_marketing/" target="_blank" rel="noopener">Instagram</a></div>
+  </div>
+</footer>
+
+<a id="kakaoFloat" class="kakao-float" href="#" target="_blank" rel="noopener" aria-label="카카오톡 상담"><span class="kakao-tip">카카오톡 상담</span><span aria-hidden="true">💬</span></a>
+<button id="editToggle" hidden="">✎ 편집모드</button>
+<div id="editBar" hidden="">
+  <span class="msg">편집 모드 — 텍스트를 클릭해 수정하고, 사진 카드에 마우스를 올려 이미지를 바꾸세요.</span>
+  <div class="actions">
+    <button type="button" class="cancel" id="cancelBtn">취소</button>
+    <button type="button" class="save" id="saveBtn" disabled="">저장 중...</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  // 구글시트 연동용 Apps Script 웹앱 URL - 배포 후 이 곳에 붙여넣으세요.
+  var GOOGLE_SCRIPT_URL = "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE";
+  // 카카오톡 채널 상담 링크 - 카카오톡 채널 관리자센터에서 발급받은 채팅 링크(예: https://pf.kakao.com/_your_channel_id/chat)를 붙여넣으세요.
+  var KAKAO_CHANNEL_URL = "PASTE_YOUR_KAKAO_CHANNEL_CHAT_URL_HERE";
+  var kakaoFloat = document.getElementById('kakaoFloat');
+  if(kakaoFloat){
+    if(KAKAO_CHANNEL_URL.indexOf('PASTE_YOUR_') === 0){
+      kakaoFloat.addEventListener('click', function(e){
+        e.preventDefault();
+        toast('카카오톡 채널 링크가 아직 연결되지 않았어요. 코드의 KAKAO_CHANNEL_URL을 채널 채팅 링크로 바꿔주세요.');
+      });
+    } else {
+      kakaoFloat.href = KAKAO_CHANNEL_URL;
+    }
+  }
+  var menuBtn = document.getElementById('menuBtn');
+  var mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', function(){
+    mobileMenu.style.display = (mobileMenu.style.display === 'block') ? 'none' : 'block';
+  });
+
+  var pages = document.querySelectorAll('.page');
+  var navLinks = document.querySelectorAll('nav.links a, #mobileMenu a');
+  function showPage(key){
+    var target = document.getElementById('page-' + key);
+    if(!target){ key = 'home'; target = document.getElementById('page-home'); }
+    pages.forEach(function(p){ p.classList.remove('active'); });
+    target.classList.add('active');
+    navLinks.forEach(function(a){
+      var href = a.getAttribute('href') || '';
+      if(href === '#' + key){ a.classList.add('active-link'); }
+      else { a.classList.remove('active-link'); }
+    });
+    window.scrollTo(0, 0);
+    mobileMenu.style.display = 'none';
+  }
+  function route(){
+    var key = (location.hash || '#home').slice(1);
+    showPage(key);
+  }
+  window.addEventListener('hashchange', route);
+  route();
+
+  var editToggle = document.getElementById('editToggle');
+  var editBar = document.getElementById('editBar');
+  var cancelBtn = document.getElementById('cancelBtn');
+  var saveBtn = document.getElementById('saveBtn');
+  var capArtifact = null, capAssets = null, capUser = null;
+  var editingOn = false;
+
+  function toast(msg){
+    var t = document.getElementById('toastMsg');
+    if(!t){
+      t = document.createElement('div');
+      t.id = 'toastMsg';
+      t.style.cssText = 'position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#141414;color:#fff;padding:10px 18px;border-radius:999px;font-size:13px;font-weight:700;z-index:100;box-shadow:0 8px 24px rgba(0,0,0,.25);';
+      document.body.appendChild(t);
+    }
+    t.textContent = msg;
+    t.style.opacity = '1';
+    clearTimeout(t._h);
+    t.style.transition = 'none';
+    t._h = setTimeout(function(){ t.style.transition = 'opacity .4s'; t.style.opacity = '0'; }, 2200);
+  }
+
+  function setEditing(on){
+    editingOn = on;
+    document.querySelectorAll('[data-edit]').forEach(function(el){
+      if(on){ el.setAttribute('contenteditable','true'); }
+      else { el.removeAttribute('contenteditable'); }
+    });
+    document.querySelectorAll('.upload-overlay').forEach(function(el){ el.hidden = !on; });
+    editBar.hidden = !on;
+    editToggle.hidden = on;
+    if(on){ saveBtn.disabled = false; saveBtn.textContent = '저장'; }
+  }
+
+  // Enter key on a [data-edit] text field normally lets the browser split
+  // the element into a new sibling block element, which corrupts card/grid
+  // layouts. Instead of letting the browser do that, insert a plain newline
+  // character in place (the [data-edit] CSS uses white-space:pre-wrap, so a
+  // "\n" renders as a real line break) — this keeps the whole field as a
+  // single element, so nothing splits and the surrounding layout never
+  // shifts. Also block the browser's built-in bold/italic/underline
+  // shortcuts, since those wrap the selection in a new inline tag that the
+  // page's styling and future edits don't expect.
+  function insertPlainText(text){
+    if(document.queryCommandSupported && document.queryCommandSupported('insertText')){
+      document.execCommand('insertText', false, text);
+    } else {
+      var sel = window.getSelection();
+      if(!sel || !sel.rangeCount) return;
+      var range = sel.getRangeAt(0);
+      range.deleteContents();
+      range.insertNode(document.createTextNode(text));
+      range.collapse(false);
+    }
+  }
+  document.addEventListener('keydown', function(e){
+    var el = e.target.closest && e.target.closest('[data-edit][contenteditable="true"]');
+    if(!el) return;
+    if(e.key === 'Enter'){ e.preventDefault(); insertPlainText('\n'); return; }
+    var mod = e.metaKey || e.ctrlKey;
+    if(mod && ['b','i','u'].indexOf(e.key.toLowerCase()) !== -1){ e.preventDefault(); }
+  });
+
+  // Pasting text into a [data-edit] field normally carries over the source's
+  // own font, size, color and formatting, which breaks the page's tone and
+  // manner. Force every paste into plain text so it inherits this page's
+  // existing font/style instead of overriding it.
+  document.addEventListener('paste', function(e){
+    var el = e.target.closest && e.target.closest('[data-edit][contenteditable="true"]');
+    if(!el) return;
+    e.preventDefault();
+    var text = (e.clipboardData || window.clipboardData).getData('text/plain');
+    if(document.queryCommandSupported && document.queryCommandSupported('insertText')){
+      document.execCommand('insertText', false, text);
+    } else {
+      var sel = window.getSelection();
+      if(!sel || !sel.rangeCount) return;
+      var range = sel.getRangeAt(0);
+      range.deleteContents();
+      range.insertNode(document.createTextNode(text));
+      range.collapse(false);
+    }
+  });
+
+  editToggle.addEventListener('click', function(){ setEditing(true); });
+  cancelBtn.addEventListener('click', function(){ location.reload(); });
+
+  document.querySelectorAll('[data-work-img], [data-hero-img], [data-mini-img]').forEach(function(card){
+    var input = card.querySelector('.upload-input');
+    var btn = card.querySelector('.upload-btn');
+    var zoomRange = card.querySelector('.zoom-range');
+    var overlay = card.querySelector('.upload-overlay');
+    var isHero = card.hasAttribute('data-hero-img');
+    var natW = 0, natH = 0, posX = 0, posY = 0, zoomLoaded = false;
+
+    function currentUrl(){
+      var m = /url\(["']?(.*?)["']?\)/.exec(card.style.backgroundImage || '');
+      return m ? m[1] : '';
+    }
+    function loadNatural(url, cb){
+      var img = new Image();
+      img.onload = function(){ natW = img.naturalWidth; natH = img.naturalHeight; zoomLoaded = true; if(cb) cb(); };
+      img.src = url;
+    }
+    function apply(zoomPct){
+      if(!natW || !natH) return;
+      var rect = card.getBoundingClientRect();
+      var zoom = Math.max(1, (zoomPct || 100) / 100);
+      var baseScale = Math.max(rect.width / natW, rect.height / natH);
+      var dW = natW * baseScale * zoom, dH = natH * baseScale * zoom;
+      var minX = Math.min(0, rect.width - dW), minY = Math.min(0, rect.height - dH);
+      if(posX === 0 && posY === 0){ posX = (rect.width - dW) / 2; posY = (rect.height - dH) / 2; }
+      posX = Math.min(0, Math.max(minX, posX));
+      posY = Math.min(0, Math.max(minY, posY));
+      card.style.backgroundRepeat = 'no-repeat';
+      card.style.backgroundSize = dW + 'px ' + dH + 'px';
+      card.style.backgroundPosition = posX + 'px ' + posY + 'px';
+    }
+
+    btn.addEventListener('click', function(e){
+      e.preventDefault(); e.stopPropagation();
+      input.click();
+    });
+    input.addEventListener('change', function(){
+      var file = input.files && input.files[0];
+      if(!file) return;
+      if(!capAssets){ toast('이미지 업로드를 사용할 수 없어요.'); return; }
+      var origText = btn.textContent;
+      btn.textContent = '업로드 중...';
+      capAssets.upload(file).then(function(res){
+        card.style.backgroundImage = 'url(' + res.url + ')';
+        card.style.backgroundSize = 'cover';
+        card.style.backgroundPosition = 'center';
+        card.classList.add('has-photo');
+        posX = 0; posY = 0; natW = 0; natH = 0; zoomLoaded = false;
+        if(zoomRange) zoomRange.value = 100;
+        loadNatural(res.url, function(){ apply(100); });
+        btn.textContent = origText;
+      }).catch(function(){
+        toast('업로드에 실패했어요. 다시 시도해주세요.');
+        btn.textContent = origText;
+      }).finally(function(){ input.value = ''; });
+    });
+
+    if(zoomRange){
+      zoomRange.addEventListener('input', function(){
+        if(!zoomLoaded){
+          var url = currentUrl();
+          if(!url) return;
+          loadNatural(url, function(){ apply(zoomRange.value); });
+        } else {
+          apply(zoomRange.value);
+        }
+      });
+    }
+
+    if(overlay){
+      var dragging = false, startX = 0, startY = 0, startPosX = 0, startPosY = 0;
+      overlay.addEventListener('pointerdown', function(e){
+        if(e.target !== overlay) return;
+        if(!card.classList.contains('has-photo')) return;
+        function begin(){
+          dragging = true;
+          startX = e.clientX; startY = e.clientY;
+          startPosX = posX; startPosY = posY;
+          try{ overlay.setPointerCapture(e.pointerId); }catch(err){}
+        }
+        if(!zoomLoaded){
+          var url = currentUrl();
+          if(!url) return;
+          loadNatural(url, function(){ apply(zoomRange ? zoomRange.value : 100); begin(); });
+        } else { begin(); }
+      });
+      overlay.addEventListener('pointermove', function(e){
+        if(!dragging) return;
+        posX = startPosX + (e.clientX - startX);
+        posY = startPosY + (e.clientY - startY);
+        apply(zoomRange ? zoomRange.value : 100);
+      });
+      overlay.addEventListener('pointerup', function(){ dragging = false; });
+      overlay.addEventListener('pointercancel', function(){ dragging = false; });
+    }
+  });
+
+  saveBtn.addEventListener('click', function(){
+    if(!capArtifact){ toast('저장 기능을 불러오는 중이에요. 잠시 후 다시 시도해주세요.'); return; }
+    var origLabel = saveBtn.textContent;
+    saveBtn.disabled = true;
+    saveBtn.textContent = '저장 중...';
+    var clone = document.documentElement.cloneNode(true);
+    clone.querySelectorAll('[contenteditable]').forEach(function(el){ el.removeAttribute('contenteditable'); });
+    var bar = clone.querySelector('#editBar'); if(bar) bar.hidden = true;
+    var tgl = clone.querySelector('#editToggle'); if(tgl) tgl.hidden = true;
+    clone.querySelectorAll('.upload-overlay').forEach(function(el){ el.hidden = true; });
+    var mm = clone.querySelector('#mobileMenu'); if(mm) mm.style.display = 'none';
+    var html = '<!DOCTYPE html>\n' + clone.outerHTML;
+    capArtifact.publish(html).then(function(){
+      toast('저장했습니다');
+      setEditing(false);
+    }).catch(function(e){
+      if(e && e.code === 'conflict'){
+        alert('다른 곳에서 먼저 저장되어 최신 내용을 불러올게요.');
+        location.reload();
+      } else if(e && (e.code === 'not_granted' || e.code === 'not_writer')){
+        toast('편집 권한이 없어요.');
+      } else {
+        toast('저장에 실패했어요. 다시 시도해주세요.');
+      }
+    }).finally(function(){
+      saveBtn.disabled = false;
+      saveBtn.textContent = origLabel;
+    });
+  });
+
+  var contactForm = document.getElementById('contactForm');
+  if(contactForm){
+    contactForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      var msgEl = document.getElementById('contactSubmitMsg');
+      var btn = document.getElementById('contactSubmitBtn');
+      var agree = contactForm.querySelector('[name="agree"]');
+      if(agree && !agree.checked){
+        msgEl.style.color = '#E31B23';
+        msgEl.textContent = '개인정보 수집 및 이용에 동의해주세요.';
+        return;
+      }
+      var data = {
+        company: (contactForm.querySelector('[name="company"]') || {}).value || '',
+        phone: (contactForm.querySelector('[name="phone"]') || {}).value || '',
+        adType: Array.prototype.slice.call(contactForm.querySelectorAll('[name="adType"]:checked')).map(function(c){ return c.value; }).join(', '),
+        website: (contactForm.querySelector('[name="website"]') || {}).value || '',
+        email: (contactForm.querySelector('[name="email"]') || {}).value || '',
+        message: (contactForm.querySelector('[name="message"]') || {}).value || '',
+        submittedAt: new Date().toISOString()
+      };
+      if(!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL.indexOf('PASTE_') === 0){
+        msgEl.style.color = '#E31B23';
+        msgEl.textContent = '구글시트 연동 주소가 아직 설정되지 않았어요.';
+        return;
+      }
+      btn.disabled = true;
+      var origText = btn.textContent;
+      btn.textContent = '전송 중...';
+      fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(data)
+      }).then(function(){
+        msgEl.style.color = '#141414';
+        msgEl.textContent = '제출이 완료되었습니다.';
+        btn.disabled = true;
+        setTimeout(function(){ location.reload(); }, 1400);
+      }).catch(function(){
+        msgEl.style.color = '#E31B23';
+        msgEl.textContent = '전송에 실패했어요. 잠시 후 다시 시도해주세요.';
+      }).finally(function(){
+        btn.disabled = false;
+        btn.textContent = origText;
+      });
+    });
+  }
+
+  (function initCaps(){
+    if(!window.claude || !window.claude.use) return;
+    Promise.resolve(window.claude.use('user')).then(function(u){ capUser = u; }).catch(function(){});
+    Promise.resolve(window.claude.use('artifact')).then(function(a){ capArtifact = a; }).catch(function(){});
+    Promise.resolve(window.claude.use('assets')).then(function(a){ capAssets = a; }).catch(function(){});
+    setTimeout(function(){
+      var canEdit = capUser && capUser.canEdit ? !!capUser.canEdit() : false;
+      if(canEdit){ editToggle.hidden = false; }
+    }, 900);
+  })();
+})();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body></html>
